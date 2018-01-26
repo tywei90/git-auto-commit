@@ -35,7 +35,7 @@ origin https://github.com/tywei90/git-auto-commit.git (push)
 origin	git@github.com:tywei90/git-auto-commit.git (fetch)  
 origin	git@github.com:tywei90/git-auto-commit.git (push)  
 ```
-那么就是ssh方式；  
+那么就是ssh方式。  
 
 更改克隆方式也很简单：  
 
@@ -43,8 +43,7 @@ https ——> ssh
 `git remote set-url origin git@github.com:tywei90/git-auto-commit.git`
 
 ssh ——> https  
-git remote 
-`set-url origin https://github.com/tywei90/git-auto-commit.git`
+`git remote set-url origin https://github.com/tywei90/git-auto-commit.git`
 
 ## 第二步：免密登录
 针对上面两种克隆项目的方式，有两种免密登录设置。
@@ -107,7 +106,7 @@ ssh git@github.com
 
 * `/root/.nvm/versions/node/v6.6.0/bin/node`是node二进制执行文件的绝对路径，不能直接写node命令，不会识别的。如何查出自己的node执行目录，其实很简单，执行`which node`即可。
 
-* 'git auto commit'是每次提交的comment，可以随意发挥
+* `'git auto commit'`是每次提交的comment，可以随意发挥
 
 * `git log -1 | mail -s "git auto commit successfully!" wty2368@163.com` 是取最新的一次git提交记录log作为邮件内容，"git auto commit successfully!"作为标题，发送邮件给wty2368@163.com邮箱。当然这个是可选项，我想让每次自动提交结束后给我发一封确认邮件，通过观察邮件内容的date值是不是当前时间，就可以判断这次自动提交是否成功。如果大家要实现这个功能，需要配置下linux邮件发送设置，这个有时间再写。主要要注意阿里云服务器对邮件25端口的限制，比较坑！
 
