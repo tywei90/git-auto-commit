@@ -17,7 +17,7 @@
 
 2. ssh克隆
 
-![ssh克隆](./assets/ssh.jpg "ssh克隆")
+![ssh克隆](./assets/ssh.png "ssh克隆")
 
 如果，你已经克隆了项目，不知道采用了哪种方式，可以执行：
 ```bash
