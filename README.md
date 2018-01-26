@@ -100,7 +100,7 @@ ssh git@github.com
 ## 第三步：设置cron，定时自动提交任务
 项目里的add.js是用来修改records.txt的，每次执行会将当前的时间附加到records.txt文件末尾。然后让git自动提交即可。下面关键是cron的设置，对于linux系统不熟悉的我还是花了点时间的，这里直接将cron设置粘贴出来。先执行`crontab -e`进入cron编辑，然后粘贴如下代码：
 ```bash
-00 12 * * * cd /home/git-auto-commit && /root/.nvm/versions/node/v6.6.0/bin/node add.js && git commit -a -m 'git auto commit' && git push origin master && git log -1 | mail -s "git auto commit successfully!" wty2368@163.com
+00 12 * * * cd /home/git-auto-commit && git pull && /root/.nvm/versions/node/v6.6.0/bin/node add.js && git commit -a -m 'git auto commit' && git push origin master && git log -1 | mail -s "git auto commit successfully!" wty2368@163.com
 ```
 * `00 12 * * *`的意思是，每天的12:00执行后面的命令。  
 
