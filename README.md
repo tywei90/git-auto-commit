@@ -13,7 +13,7 @@
 不同的克隆方式导致校验方式不同，对应的免秘方式也不一样。简单来说，https通过记住账号密码免登，ssh通过校验生成的密钥免登。  
 1. https克隆
 
-![https克隆](./assets/https.png "https克隆")  
+![https克隆](./assets/ssh.png "https克隆")  
 
 2. ssh克隆
 
