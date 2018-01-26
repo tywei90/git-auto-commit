@@ -24,27 +24,27 @@
 git remote -v
 ```
 如果是这样：  
-
+```
 origin https://github.com/tywei90/git-auto-commit.git (fetch)  
 origin https://github.com/tywei90/git-auto-commit.git (push)  
-
+```
 那么就是https方式； 
 
 如果是这样：  
-
+```
 origin	git@github.com:tywei90/git-auto-commit.git (fetch)  
 origin	git@github.com:tywei90/git-auto-commit.git (push)  
-
+```
 那么就是ssh方式；  
 
 更改克隆方式也很简单：  
 
 https ——> ssh  
-git remote set-url origin git@github.com:tywei90/git-auto-commit.git  
+`git remote set-url origin git@github.com:tywei90/git-auto-commit.git`
 
 ssh ——> https  
 git remote 
-set-url origin https://github.com/tywei90/git-auto-commit.git  
+`set-url origin https://github.com/tywei90/git-auto-commit.git`
 
 ## 第二步：免密登录
 针对上面两种克隆项目的方式，有两种免密登录设置。
@@ -63,7 +63,7 @@ vim config
 
 ### 2.公钥私钥免登（ssh克隆）
 
-#### <1> 生成公钥和私钥
+#### 2.1 生成公钥和私钥
 
 检查本机的ssh密钥：
 ```bash
@@ -78,12 +78,12 @@ ssh-keygen -t rsa
 ```
 输入上面命令后，遇到选择直接回车，即可生成ssh 密钥。生成ssh 密钥后，可以到~/.ssh目录下查看相关文件，一般来说ssh 密钥会包含id_rsa和id_rsa.pub两个文件，分别表示生成的私钥和公钥。
 
-#### <2> 拷贝公钥到你的github
+#### 2.2 拷贝公钥到你的github
 在.ssh目录下，执行`cat id_rsa.pub`，复制所有公钥内容
 
 点击github的头像，在下拉菜单中选择 setting 选项，在打开页面的左侧菜单中点击 SSH and GPG keys，然后点击新页面右上角绿色按钮 New SSH key。填写title值，并将复制的公钥内容粘贴到key输入框中提交。
 
-#### <3> 测试链接github
+#### 2.3 测试链接github
 我看网上是输入如下命令：
 ```bash
 ssh –t git@github.com
@@ -103,17 +103,17 @@ ssh git@github.com
 ```bash
 00 12 * * * cd /home/git-auto-commit && /root/.nvm/versions/node/v6.6.0/bin/node add.js && git commit -a -m 'git auto commit' && git push origin master && git log -1 | mail -s "git auto commit successfully!" wty2368@163.com
 ```
-`00 12 * * *`的意思是，每天的12:00执行后面的命令。  
+* `00 12 * * *`的意思是，每天的12:00执行后面的命令。  
 
-`/root/.nvm/versions/node/v6.6.0/bin/node`是node二进制执行文件的绝对路径，不能直接写node命令，不会识别的。如何查出自己的node执行目录，其实很简单，执行`which node`即可。
+* `/root/.nvm/versions/node/v6.6.0/bin/node`是node二进制执行文件的绝对路径，不能直接写node命令，不会识别的。如何查出自己的node执行目录，其实很简单，执行`which node`即可。
 
-'git auto commit'是每次提交的comment，可以随意发挥
+* 'git auto commit'是每次提交的comment，可以随意发挥
 
-`git log -1 | mail -s "git auto commit successfully!" wty2368@163.com` 是取最新的一次git提交记录log作为邮件内容，"git auto commit successfully!"作为标题，发送邮件给wty2368@163.com邮箱。当然这个是可选项，我想让每次自动提交结束后给我发一封确认邮件，通过观察邮件内容的date值是不是当前时间，就可以判断这次自动提交是否成功。如果大家要实现这个功能，需要配置下linux邮件发送设置，这个有时间再写。主要要注意阿里云服务器对邮件25端口的限制，比较坑！
+* `git log -1 | mail -s "git auto commit successfully!" wty2368@163.com` 是取最新的一次git提交记录log作为邮件内容，"git auto commit successfully!"作为标题，发送邮件给wty2368@163.com邮箱。当然这个是可选项，我想让每次自动提交结束后给我发一封确认邮件，通过观察邮件内容的date值是不是当前时间，就可以判断这次自动提交是否成功。如果大家要实现这个功能，需要配置下linux邮件发送设置，这个有时间再写。主要要注意阿里云服务器对邮件25端口的限制，比较坑！
 
 ## 后记
 至此，git自动提交设置就完成了，妈妈再也不用担心我哪天忘记提交git记录了。:smile:
 
 工作生活中，我们经常会有各种各样的想法，大家不要忽视了或者觉得很难就不去做。其实真正动手去实践，发现并没有那么难，反而很有趣。而且不知不觉中就学到了很多知识。  
 
-（完）
+(完)
