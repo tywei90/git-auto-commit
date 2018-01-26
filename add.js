@@ -1,4 +1,4 @@
-//日期格式化，格式化后:2016-03-09 11:20:12
+//日期格式化，格式化后:2018-01-26 21:25:12
 Date.prototype.format = function(format) {
     var o = {
         "M+": this.getMonth() + 1, //month 
@@ -19,11 +19,6 @@ Date.prototype.format = function(format) {
     return format;
 }
 
-let counter = process.argv[2];
-if (!counter) {
-    console.log('参数错误，需要传递执行的次数');
-    return
-}
 let fs = require('fs');
-let time = (new Date()).format("yyyy-MM-dd hh:mm:ss");
-fs.appendFileSync('records.txt', `${time}：第${counter}次提交\n\n`);
+let time = (new Date()).format("yyyy年MM月dd日 hh:mm:ss");
+fs.appendFileSync('records.txt', `${time}\n\n`);
